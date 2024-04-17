@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    
+    <title>Document</title>
+
+    <py-env>
+        - pandas
+        - matplotlib
+    </py-env>
+</head>
+<body>
+    <div id="python-output" style="background-color: lightblue;"></div>
+    <div id="plot"></div>
+    <py-script>
+import sys
+import pandas as pd
+import matplotlib.pyplot as plt
+
+pyscript.write('python-output', sys.version_info)
+
+df = pd.DataFrame({
+    "名前": ["sato", "saito", "tanaka"],
+    "年齢": [20, 32, 46]
+})
+
+<!-- print(df) -->
+
+fig, ax = plt.subplots()
+ax.bar(df["名前"], df["年齢"])
+pyscript.write("plot", fig)
+    </py-script>
+</body>
+</html>
